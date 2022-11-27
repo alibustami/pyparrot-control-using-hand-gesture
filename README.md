@@ -9,7 +9,12 @@
     $~ conda env create -f environment.yml
     ```
 	
-2. install `pre-commit` hooks by running this command:
+2. activate the environment by running this command:
+    ```
+    $~ conda activate pyparrot-env
+    ```
+
+3. install `pre-commit` hooks by running this command:
     ```
     $~ pre-commit install
     ```
