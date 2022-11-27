@@ -1,0 +1,7 @@
+name: pyparrot-env
+dependencies:
+  - python=3.6.13
+  - pip
+  - pip:
+    - pyparrot
+    - pre-commit
