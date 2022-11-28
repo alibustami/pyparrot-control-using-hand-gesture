@@ -11,7 +11,7 @@
 	
 2. activate the environment by running this command:
     ```
-    $~ conda activate pyparrot-env
+    $~ conda activate parrot-env
     ```
 
 3. install `pre-commit` hooks by running this command:
