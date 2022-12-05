@@ -5,4 +5,4 @@ dependencies:
   - pip:
     - pyparrot
     - pre-commit
-    - opencv-contrib-python
+    - opencv-python-headless
