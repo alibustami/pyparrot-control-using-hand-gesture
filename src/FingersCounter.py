@@ -3,7 +3,7 @@ from typing import Any
 
 
 class FingersCounter:
-    def __init__(self):
+    def __init__(self, image_array):
         pass
 
     def count_from_image(self, image: Any):
