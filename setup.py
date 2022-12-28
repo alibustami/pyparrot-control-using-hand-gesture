@@ -1,6 +1,6 @@
 from setuptools import setup
 
-REQUIREMENTS = ["pyparrot", "opencv-python-headless"]
+REQUIREMENTS = ["pyparrot", "opencv-python-headless", "mediapipe"]
 
 # DO NOT EDIT BELOW THIS LINE
 DEV_REQUIREMENTS = [
@@ -21,4 +21,5 @@ setup(
     packages=["src", "tests"],
     install_requires=REQUIREMENTS + DEV_REQUIREMENTS,
     license="MIT",
+    include_package_data=True,
 )
