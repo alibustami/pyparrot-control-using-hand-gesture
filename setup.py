@@ -23,6 +23,7 @@ setup(
     version="0.0.1",
     description="Control Parrot Bebop Drone with Python using Hand Gestures",
     author=["Ali Albustami", "Aya Haubsh"],
+    author_email=["alialbustami@gmail.com", "ayahaubsh9@gmail.com"],
     python_requires="==3.6.13",
     packages=["src", "tests"],
     install_requires=REQUIREMENTS + DEV_REQUIREMENTS,
