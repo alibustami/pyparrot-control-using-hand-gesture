@@ -1,6 +1,12 @@
 from setuptools import setup
 
-REQUIREMENTS = ["pyparrot", "opencv-python-headless", "mediapipe"]
+REQUIREMENTS = [
+    "pyparrot",
+    "opencv-python-headless",
+    "mediapipe",
+    "untangle",
+    "zeroconf",
+]
 
 # DO NOT EDIT BELOW THIS LINE
 DEV_REQUIREMENTS = [
