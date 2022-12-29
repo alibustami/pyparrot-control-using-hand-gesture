@@ -62,6 +62,7 @@ class FingersCounter:
         List[Union[int, np.array, float]]
             The number of fingers, the image with the hand annotations and the time it took to count the fingers.
         """
+        score: float = 0.0
         start_time = time.time()
         with mp.solutions.hands.Hands(
             min_detection_confidence=self.min_detection_confidence,
@@ -103,6 +104,13 @@ class FingersCounter:
                     for landmarks in hand_landmarks.landmark:
                         hand_landmarks_list.append((landmarks.x, landmarks.y))
 
+                    # get the hand bounding box
+                    height, width, _ = image.shape
+                    x_min: int = int(hand_landmarks_list[4][0] * width)
+                    y_min: int = int(hand_landmarks_list[12][1] * height)
+                    x_max: int = int(hand_landmarks_list[20][0] * width)
+                    y_max: int = int(hand_landmarks_list[0][1] * height)
+
                     # test conditions to count fingers
                     if (
                         hand_label == "Left"
@@ -135,19 +143,36 @@ class FingersCounter:
                         hand_landmarks_list[20][1] < hand_landmarks_list[18][1]
                     ):  # pinky
                         fingers_counter += 1
-        self.mp_drawing.draw_landmarks(
-            image, hand_landmarks, mp.solutions.hands.HAND_CONNECTIONS
-        )
-        cv2.putText(
-            img=image,
-            text=str(fingers_counter),
-            org=(10, 50),
-            fontFace=cv2.FONT_HERSHEY_SIMPLEX,
-            fontScale=1,
-            color=(0, 0, 255),  # red
-            thickness=2,
-            lineType=cv2.LINE_AA,
-        )
+                self.mp_drawing.draw_landmarks(
+                    image, hand_landmarks, mp.solutions.hands.HAND_CONNECTIONS
+                )
+                cv2.putText(
+                    img=image,
+                    text=str(fingers_counter),
+                    org=(10, 50),
+                    fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+                    fontScale=1,
+                    color=(0, 0, 255),  # red
+                    thickness=2,
+                    lineType=cv2.LINE_AA,
+                )
+                cv2.putText(
+                    img=image,
+                    text=str(score),
+                    org=(10, 100),
+                    fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+                    fontScale=1,
+                    color=(0, 0, 255),  # red
+                    thickness=2,
+                    lineType=cv2.LINE_AA,
+                )
+                cv2.rectangle(
+                    img=image,
+                    pt1=(x_min, y_min),
+                    pt2=(x_max, y_max),
+                    color=(255, 255, 0),  # yellow
+                    thickness=2,
+                )
         end_time = time.time()
         fps = 1 / (end_time - start_time)
         print(fps)
