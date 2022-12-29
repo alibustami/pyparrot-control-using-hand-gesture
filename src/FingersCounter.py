@@ -1,6 +1,6 @@
 """This module contains the FingersCounter class."""
 import time
-from typing import Any, List
+from typing import Any, List, Union
 
 import cv2
 import mediapipe as mp
@@ -24,9 +24,7 @@ class FingersCounter:
         Counts the fingers in a given image.
     """
 
-    def __init__(
-        self, max_num_hands: int = 2,
-    ):
+    def __init__(self, max_num_hands: int = 2,) -> List[Union[int, np.array]]:
         """
         Constructs all the necessary attributes for the FingersCounter object.
 
@@ -37,7 +35,8 @@ class FingersCounter:
 
         Returns
         -------
-        None
+        List[Union[int, np.array]]
+            The number of fingers and the image with the hand annotations.
         """
         min_detection_confidence = load(key="min detection confidence")
         min_tracking_confidence = load(key="min tracking confidence")
