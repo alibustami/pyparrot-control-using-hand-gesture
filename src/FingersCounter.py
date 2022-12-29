@@ -104,13 +104,6 @@ class FingersCounter:
                     for landmarks in hand_landmarks.landmark:
                         hand_landmarks_list.append((landmarks.x, landmarks.y))
 
-                    # get the hand bounding box
-                    height, width, _ = image.shape
-                    x_min: int = int(hand_landmarks_list[4][0] * width)
-                    y_min: int = int(hand_landmarks_list[12][1] * height)
-                    x_max: int = int(hand_landmarks_list[20][0] * width)
-                    y_max: int = int(hand_landmarks_list[0][1] * height)
-
                     # test conditions to count fingers
                     if (
                         hand_label == "Left"
@@ -166,13 +159,7 @@ class FingersCounter:
                     thickness=2,
                     lineType=cv2.LINE_AA,
                 )
-                cv2.rectangle(
-                    img=image,
-                    pt1=(x_min, y_min),
-                    pt2=(x_max, y_max),
-                    color=(255, 255, 0),  # yellow
-                    thickness=2,
-                )
+
         end_time = time.time()
         fps = 1 / (end_time - start_time)
         print(fps)
