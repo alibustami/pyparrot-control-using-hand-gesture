@@ -1,44 +1,86 @@
-import sys
-
+"""This is the main file of the project. It is used to control the drone with hand gestures."""
 import cv2
 
 from configs import load
 from FingersCounter import FingersCounter
-
-# project_name: str = load(key='project name')
-# print(project_name)
+from utils import takeoff
 
 
-counter = FingersCounter()
+def main():
+    """
+    The main function of the project.
 
-# image = cv2.imread("tests/fixtures/hand_1_up.jpeg")
-# images = [f"tests/fixtures/hand_{i}_up.jpeg" for i in range(6)]
-# for image in images:
-#     image = cv2.imread(image)
-#     counted_fingers, image = counter.count_from_frame(image)
-#     print("*"*10)
-# print(counted_fingers)
+    Raises
+    ------
+    Exception
+        If the frame is not read correctly.
+    """
+    # takeoff the drone and initialize the fingers counter
+    bepop, height = takeoff()
+    counter = FingersCounter(max_num_hands=2)
 
-# while True:
-#     cv2.imshow("image", image)
-#     if cv2.waitKey(1) & 0xFF == ord('q'):
-#         break
-# cv2.destroyAllWindows()
-# # while True:
-# #     cv2.imshow("image", image)
-# #     if cv2.waitKey(1) & 0xFF == ord('q'):
-# #         break
-# # cv2.destroyAllWindows()
-video = cv2.VideoCapture(0)
-while True:
-    _, image = video.read()
-    try:
-        # image = cv2.resize(image, (640, 480))
-        counted_fingers, image = counter.count_from_frame(image)
-    except TypeError:
-        print("No hand detected")
-        continue
-    # print(counted_fingers)
-    cv2.imshow("image", image)
-    if cv2.waitKey(1) & 0xFF == ord("q"):
-        break
+    # initialize the video capture
+    video = cv2.VideoCapture(0)
+
+    # initialize the fingers counter
+    fingers_counter: int = 0
+
+    # initialize the drone controller
+    duration: float = load(key="duration")
+
+    while True:
+        # Capture frame-by-frame
+        ret, frame = video.read()
+
+        # if the frame is not read correctly, break the loop
+        if not ret:
+            raise Exception("Could not read frame")
+            break
+
+        # count the fingers
+        fingers_counter, return_frame = counter.count_from_frame(frame)
+
+        # control the drone
+        if fingers_counter == 0:  # land
+            bepop.safe_land(height)
+        elif fingers_counter == 1:  # pitch forward
+            bepop.fly_direct(
+                roll=0, pitch=1, yaw=0, vertical_movement=0, duration=duration
+            )
+        elif fingers_counter == 2:  # pitch backward
+            bepop.fly_direct(
+                roll=0, pitch=-1, yaw=0, vertical_movement=0, duration=duration
+            )
+        elif fingers_counter == 3:  # roll right
+            bepop.fly_direct(
+                roll=1, pitch=0, yaw=0, vertical_movement=0, duration=duration
+            )
+        elif fingers_counter == 4:  # roll left
+            bepop.fly_direct(
+                roll=-1, pitch=0, yaw=0, vertical_movement=0, duration=duration
+            )
+        elif fingers_counter == 5:  # yaw right
+            bepop.fly_direct(
+                roll=0, pitch=0, yaw=1, vertical_movement=0, duration=duration
+            )
+        elif fingers_counter == 6:  # yaw left
+            bepop.fly_direct(
+                roll=0, pitch=0, yaw=-1, vertical_movement=0, duration=duration
+            )
+        elif fingers_counter == 7:  # go up
+            bepop.fly_direct(
+                roll=0, pitch=0, yaw=0, vertical_movement=1, duration=duration
+            )
+
+        # Display the resulting frame
+        cv2.imshow("Drone Controller", frame)
+        if cv2.waitKey(1) & 0xFF == ord("q"):
+            break
+
+    # When everything done, release the capture
+    video.release()
+    cv2.destroyAllWindows()
+
+
+if __name__ == "__main__":
+    main()
