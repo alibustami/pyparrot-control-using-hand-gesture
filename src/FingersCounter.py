@@ -46,7 +46,9 @@ class FingersCounter:
         self.min_tracking_confidence = min_tracking_confidence
         self.max_num_hands = max_num_hands
 
-    def count_from_frame(self, image: np.array) -> List[Union[int, np.array]]:
+    def count_from_frame(
+        self, image: np.array
+    ) -> List[Union[int, np.array, float]]:
         """
         Counts the fingers in a given image.
 
@@ -57,8 +59,8 @@ class FingersCounter:
 
         Returns
         -------
-        List[Union[int, np.array]]
-            The number of fingers and the image with the hand annotations.
+        List[Union[int, np.array, float]]
+            The number of fingers, the image with the hand annotations and the time it took to count the fingers.
         """
         start_time = time.time()
         with mp.solutions.hands.Hands(
@@ -87,6 +89,11 @@ class FingersCounter:
                         results.multi_handedness[hand_index]
                         .classification[0]
                         .label
+                    )
+                    score = (
+                        results.multi_handedness[hand_index]
+                        .classification[0]
+                        .score
                     )
 
                     # set variable to keep landmarks potitions (x, y)
@@ -145,4 +152,4 @@ class FingersCounter:
         fps = 1 / (end_time - start_time)
         print(fps)
         # print(end_time - start_time)
-        return [fingers_counter, image]
+        return [fingers_counter, image, score]
