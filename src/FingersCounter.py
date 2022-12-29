@@ -8,9 +8,6 @@ import numpy as np
 
 from src.configs import load
 
-min_detection_confidence = load(key="min detection confidence")
-min_tracking_confidence = load(key="min tracking confidence")
-
 
 class FingersCounter:
     """
@@ -18,10 +15,6 @@ class FingersCounter:
 
     Attributes
     ----------
-    min_detection_confidence : float
-        The minimum confidence for the detection.
-    min_tracking_confidence : float
-        The minimum confidence for the tracking.
     max_num_hands : int
         The maximum number of hands to detect.
 
@@ -32,20 +25,13 @@ class FingersCounter:
     """
 
     def __init__(
-        self,
-        min_detection_confidence: float = min_detection_confidence,
-        min_tracking_confidence: float = min_tracking_confidence,
-        max_num_hands: int = 2,
+        self, max_num_hands: int = 2,
     ):
         """
         Constructs all the necessary attributes for the FingersCounter object.
 
         Parameters
         ----------
-        min_detection_confidence : float
-            The minimum confidence for the detection.
-        min_tracking_confidence : float
-            The minimum confidence for the tracking.
         max_num_hands : int
             The maximum number of hands to detect.
 
@@ -53,6 +39,8 @@ class FingersCounter:
         -------
         None
         """
+        min_detection_confidence = load(key="min detection confidence")
+        min_tracking_confidence = load(key="min tracking confidence")
         self.mp_drawing = mp.solutions.drawing_utils
         # self.mp_hands = mp.solutions.hands
         self.min_detection_confidence = min_detection_confidence
