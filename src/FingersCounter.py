@@ -46,7 +46,20 @@ class FingersCounter:
         self.min_tracking_confidence = min_tracking_confidence
         self.max_num_hands = max_num_hands
 
-    def count_from_frame(self, image: np.array):
+    def count_from_frame(self, image: np.array) -> List[Union[int, np.array]]:
+        """
+        Counts the fingers in a given image.
+
+        Parameters
+        ----------
+        image : np.array
+            The image to count the fingers in.
+
+        Returns
+        -------
+        List[Union[int, np.array]]
+            The number of fingers and the image with the hand annotations.
+        """
         start_time = time.time()
         with mp.solutions.hands.Hands(
             min_detection_confidence=self.min_detection_confidence,
