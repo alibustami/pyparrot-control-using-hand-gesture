@@ -18,6 +18,11 @@ DEV_REQUIREMENTS = [
     "pep8-naming",
 ]
 
+TEST_PACKAGES = [
+    "pytest",
+    "pytest-cov",
+]
+
 setup(
     name="parrot",
     version="0.0.1",
@@ -25,8 +30,12 @@ setup(
     author=["Ali Albustami", "Aya Haubsh"],
     author_email=["alialbustami@gmail.com", "ayahaubsh9@gmail.com"],
     python_requires="==3.6.13",
-    packages=["src", "tests"],
+    packages=["src"],
     install_requires=REQUIREMENTS + DEV_REQUIREMENTS,
+    extras_require={
+        "dev": DEV_REQUIREMENTS + TEST_PACKAGES,
+        "test": TEST_PACKAGES,
+    },
     license="MIT",
     include_package_data=True,
 )
