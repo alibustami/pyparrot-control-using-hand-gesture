@@ -1,2 +1,4 @@
 min detection confidence: 0.5
 min tracking confidence: 0.5
+takeoff height: 5
+duration: 0.1
