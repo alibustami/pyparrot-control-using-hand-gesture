@@ -51,4 +51,4 @@ class TestFingersCounter(unittest.TestCase):
         image_path: str = os.path.join("tests", "fixtures", "hand_5_up.jpeg")
         image = cv2.imread(image_path)
         fingers_counter = FingersCounter()
-        self.assertEqual(fingers_counter.count_from_frame(image)[0], 4)
+        self.assertEqual(fingers_counter.count_from_frame(image)[0], 5)
