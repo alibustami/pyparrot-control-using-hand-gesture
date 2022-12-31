@@ -43,31 +43,35 @@ def main():
         # control the drone
         if fingers_counter == 0:  # land
             bepop.safe_land(height)
-        elif fingers_counter == 1:  # pitch forward
+        elif fingers_counter == 1:  # hover in place
+            bepop.fly_direct(
+                roll=0, pitch=0, yaw=0, vertical_movement=0, duration=duration
+            )
+        elif fingers_counter == 2:  # pitch forward
             bepop.fly_direct(
                 roll=0, pitch=1, yaw=0, vertical_movement=0, duration=duration
             )
-        elif fingers_counter == 2:  # pitch backward
+        elif fingers_counter == 3:  # pitch backward
             bepop.fly_direct(
                 roll=0, pitch=-1, yaw=0, vertical_movement=0, duration=duration
             )
-        elif fingers_counter == 3:  # roll right
+        elif fingers_counter == 4:  # roll right
             bepop.fly_direct(
                 roll=1, pitch=0, yaw=0, vertical_movement=0, duration=duration
             )
-        elif fingers_counter == 4:  # roll left
+        elif fingers_counter == 5:  # roll left
             bepop.fly_direct(
                 roll=-1, pitch=0, yaw=0, vertical_movement=0, duration=duration
             )
-        elif fingers_counter == 5:  # yaw right
+        elif fingers_counter == 6:  # yaw right
             bepop.fly_direct(
                 roll=0, pitch=0, yaw=1, vertical_movement=0, duration=duration
             )
-        elif fingers_counter == 6:  # yaw left
+        elif fingers_counter == 7:  # yaw left
             bepop.fly_direct(
                 roll=0, pitch=0, yaw=-1, vertical_movement=0, duration=duration
             )
-        elif fingers_counter == 7:  # go up
+        elif fingers_counter == 8:  # go up
             bepop.fly_direct(
                 roll=0, pitch=0, yaw=0, vertical_movement=1, duration=duration
             )
