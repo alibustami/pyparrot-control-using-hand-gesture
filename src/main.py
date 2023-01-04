@@ -75,6 +75,10 @@ def main():
             bepop.fly_direct(
                 roll=0, pitch=0, yaw=0, vertical_movement=1, duration=duration
             )
+        elif fingers_counter == 9:  # go down
+            bepop.fly_direct(
+                roll=0, pitch=0, yaw=0, vertical_movement=-1, duration=duration
+            )
 
         # Display the resulting frame
         cv2.imshow("Drone Controller", frame)
