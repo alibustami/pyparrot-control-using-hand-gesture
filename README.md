@@ -1,6 +1,6 @@
 # pyparrot-control-using-hand-gesture
 
-## Description
+## 📖 Description
 
 This project is a proof of concept for controlling a drone using hand gestures. The project is based on the [pyparrot](https://pypi.org/project/pyparrot/) library.
 
@@ -13,12 +13,12 @@ The project is divided into two parts:
 
 This project uses the [mediapipe](https://pypi.org/project/mediapipe/) library for hand gesture recognition.
 
-## Requirements
+## 🛠️ Requirements
 
 - Ubuntu
 - miniconda
 
-## Installation
+## 💻 Installation
 
 
 1. create `conda` virtual environment by running this command:
@@ -41,7 +41,7 @@ $~ conda activate parrot-env
 $~ make install
 ```
 
-## Usage
+## 📑 Usage
 
 1- You have to connect to the drone WiFi network. Example: `RS_XXXXXXXXXX`
 
@@ -49,6 +49,8 @@ $~ make install
     ```
     $~ python src/main.py
     ```
+
+**BECAREFUL: BY RUNNING THIS COMMAND THE DRONE WILL TAKEOFF **
 
 > if you want to test the `FingersCounter` class, you can run `test.py` file in the `src` directory, using this command:
     ```
@@ -68,5 +70,18 @@ This is the list of commands to control the drone:
 | 6 | yaw right |
 | 7 | yaw left |
 | 8 | go up |
+| 9 | go down |
 
 ![Roll, Pitch & Yaw](fixtures/rotations.png)
+
+
+## Configrable Parameters
+
+You can change the following parameters in the `config.py` file:
+
+| Parameter | Description |
+|--|--|
+| min detection confidence | minimum hand detection confidence |
+| min tracking confidence | minimum hand tracking confidence |
+| take off altitude | altitude to take off to |
+| duration | duration of the command (the bigger the slower)|
