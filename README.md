@@ -2,7 +2,7 @@
 
 ## description
 
-This project is a proof of concept for controlling a drone using hand gestures. The project is based on the [pyparrot]() library.
+This project is a proof of concept for controlling a drone using hand gestures. The project is based on the [pyparrot](https://pypi.org/project/pyparrot/) library.
 
 ![Parrot Bopop 2](fixtures/bepop2.jpg)
 
@@ -14,22 +14,28 @@ The project is divided into two parts:
 This project uses the [mediapipe](https://pypi.org/project/mediapipe/) library for hand gesture recognition.
 
 
-## usage
+## Installation
+
 
 1. create `conda` virtual environment by running this command:
-	```
-    $~ conda env create -f environment.yml
-    ```
+
+```
+$~ make virenv
+```
 
 2. activate the environment by running this command:
-    ```
-    $~ conda activate parrot-env
-    ```
 
-3. install `pre-commit` hooks by running this command:
-    ```
-    $~ pre-commit install
-    ```
+```
+$~ conda activate parrot-env
+```
+
+
+
+3. install requirements by running this command:
+
+```
+$~ make install
+```
 
 ## usage
 
