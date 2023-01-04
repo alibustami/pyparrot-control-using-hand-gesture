@@ -26,7 +26,7 @@ def takeoff() -> List[Callable, int]:
     bebop.set_hull_protection(1)  # 1 = on, 0 = off
 
     # take off
-    height: int = load(key="takeoff height")
+    height: int = load(key="takeoff altitude")
     bebop.safe_takeoff(height)
 
     return [bebop, height]
