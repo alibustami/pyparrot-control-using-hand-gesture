@@ -75,7 +75,7 @@ This is the list of commands to control the drone:
 ![Roll, Pitch & Yaw](fixtures/rotations.png)
 
 
-## 🌀 Configrable Parameters
+## 🌀 Configurable Parameters
 
 You can change the following parameters in the `config.yaml` file:
 
