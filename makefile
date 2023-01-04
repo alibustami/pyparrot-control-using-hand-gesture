@@ -1,6 +1,5 @@
 virenv:
-	conda env create -f environment.yaml && \
-	source $$(conda info --base)/etc/profile.d/conda.sh && conda activate parrot-env && \
+	conda env create -f environment.yaml
 
 
 install:
