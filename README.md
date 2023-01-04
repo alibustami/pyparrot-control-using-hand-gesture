@@ -1,6 +1,6 @@
 # pyparrot-control-using-hand-gesture
 
-## description
+## Description
 
 This project is a proof of concept for controlling a drone using hand gestures. The project is based on the [pyparrot](https://pypi.org/project/pyparrot/) library.
 
@@ -13,6 +13,10 @@ The project is divided into two parts:
 
 This project uses the [mediapipe](https://pypi.org/project/mediapipe/) library for hand gesture recognition.
 
+## Requirements
+
+- Ubuntu
+- miniconda
 
 ## Installation
 
@@ -37,7 +41,7 @@ $~ conda activate parrot-env
 $~ make install
 ```
 
-## usage
+## Usage
 
 1- You have to connect to the drone WiFi network. Example: `RS_XXXXXXXXXX`
 
