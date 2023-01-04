@@ -75,7 +75,7 @@ This is the list of commands to control the drone:
 ![Roll, Pitch & Yaw](fixtures/rotations.png)
 
 
-## Configrable Parameters
+## 🌀 Configrable Parameters
 
 You can change the following parameters in the `config.yaml` file:
 
@@ -86,6 +86,15 @@ You can change the following parameters in the `config.yaml` file:
 | take off altitude | altitude to take off to |
 | duration | duration of the command (the bigger the slower)|
 
+
+## 🧪 Testing
+
+You can test the project by running this command:
+
+```
+$~ make test
+```
+
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
@@ -95,6 +104,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [pyparrot](https://pypi.org/project/pyparrot/)
 - [mediapipe](https://pypi.org/project/mediapipe/)
 
-## Contribution
+## 🔼 Contribution
 
 If you want to contribute to this project, you can do it by forking the project and creating a pull request.
