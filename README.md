@@ -75,6 +75,23 @@ This is the list of commands to control the drone:
 ![Roll, Pitch & Yaw](fixtures/rotations.png)
 
 
+## 📹 Examples
+
+Here are some examples of the hand gesture recognition:
+
+### 📹 1
+
+![Example 1](fixtures/Example-1.jpeg)
+
+### 📹 2
+
+![Example 2](fixtures/Example-2.jpeg)
+
+### 📹 3
+
+![Example 3](fixtures/Example-3.jpeg)
+
+
 ## 🌀 Configurable Parameters
 
 You can change the following parameters in the `config.yaml` file:
