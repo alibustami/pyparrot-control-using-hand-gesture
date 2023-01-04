@@ -77,7 +77,7 @@ This is the list of commands to control the drone:
 
 ## Configrable Parameters
 
-You can change the following parameters in the `config.py` file:
+You can change the following parameters in the `config.yaml` file:
 
 | Parameter | Description |
 |--|--|
