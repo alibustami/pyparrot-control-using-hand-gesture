@@ -85,3 +85,16 @@ You can change the following parameters in the `config.yaml` file:
 | min tracking confidence | minimum hand tracking confidence |
 | take off altitude | altitude to take off to |
 | duration | duration of the command (the bigger the slower)|
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+
+## 📚 References
+
+- [pyparrot](https://pypi.org/project/pyparrot/)
+- [mediapipe](https://pypi.org/project/mediapipe/)
+
+## Contribution
+
+If you want to contribute to this project, you can do it by forking the project and creating a pull request.
