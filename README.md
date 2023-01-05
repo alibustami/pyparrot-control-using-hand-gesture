@@ -112,6 +112,42 @@ You can test the project by running this command:
 $~ make test
 ```
 
+
+## 📚 FAQ
+
+### What type of drones are supported by this project?
+
+This project is based on the [pyparrot](https://pypi.org/project/pyparrot/) library. It supports only the Bebop 2 drone.
+
+### Is there any specific hardware requirements for using this project?
+
+No, you can use any laptop or desktop computer.
+
+### How do I calibrate the hand gesture recognition system?
+
+You can calibrate the hand gesture recognition system using the configurablesparameters in the `config.yaml` file. Check the [Configurable Parameters](#configurable-parameters) section for more details.
+
+### How do I calibrate the drone control system?
+
+You can calibrate the drone control system using the configurable parameter `duration` in the `config.yaml` file. Check the [Configurable Parameters](#configurable-parameters) section for more details.
+
+
+### What safety precautions should I take when using this project?
+
+You should be careful when using this project. You should be aware of the surroundings and make sure that there are no obstacles in the drone's path. You should also make sure that the drone is not flying too high out of the WiFi range.
+
+Also you should take care when running the `main.py` file. By running this file, the drone will takeoff. So make sure that you are in a safe place before running this file.
+
+### How to test the project without a drone?
+
+For testing the project without a Parrot Bepop 2 drone, you will be testing the `hand_gesture_recognition` part only. To do that, you can run this command:
+
+```
+$~ python src/test.py
+```
+
+
+
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
