@@ -15,6 +15,11 @@ def main():
     Exception
         If the frame is not read correctly.
     """
+    # load the configs
+    pitch_target = load(key="pitch target")
+    roll_target = load(key="roll target")
+    yaw_target = load(key="yaw target")
+
     # takeoff the drone and initialize the fingers counter
     bepop, height = takeoff()
     counter = FingersCounter(max_num_hands=2)
@@ -49,27 +54,51 @@ def main():
             )
         elif fingers_counter == 2:  # pitch forward
             bepop.fly_direct(
-                roll=0, pitch=1, yaw=0, vertical_movement=0, duration=duration
+                roll=0,
+                pitch=pitch_target,
+                yaw=0,
+                vertical_movement=0,
+                duration=duration,
             )
         elif fingers_counter == 3:  # pitch backward
             bepop.fly_direct(
-                roll=0, pitch=-1, yaw=0, vertical_movement=0, duration=duration
+                roll=0,
+                pitch=-pitch_target,
+                yaw=0,
+                vertical_movement=0,
+                duration=duration,
             )
         elif fingers_counter == 4:  # roll right
             bepop.fly_direct(
-                roll=1, pitch=0, yaw=0, vertical_movement=0, duration=duration
+                roll=roll_target,
+                pitch=0,
+                yaw=0,
+                vertical_movement=0,
+                duration=duration,
             )
         elif fingers_counter == 5:  # roll left
             bepop.fly_direct(
-                roll=-1, pitch=0, yaw=0, vertical_movement=0, duration=duration
+                roll=-roll_target,
+                pitch=0,
+                yaw=0,
+                vertical_movement=0,
+                duration=duration,
             )
         elif fingers_counter == 6:  # yaw right
             bepop.fly_direct(
-                roll=0, pitch=0, yaw=1, vertical_movement=0, duration=duration
+                roll=0,
+                pitch=0,
+                yaw=yaw_target,
+                vertical_movement=0,
+                duration=duration,
             )
         elif fingers_counter == 7:  # yaw left
             bepop.fly_direct(
-                roll=0, pitch=0, yaw=-1, vertical_movement=0, duration=duration
+                roll=0,
+                pitch=0,
+                yaw=-yaw_target,
+                vertical_movement=0,
+                duration=duration,
             )
         elif fingers_counter == 8:  # go up
             bepop.fly_direct(
