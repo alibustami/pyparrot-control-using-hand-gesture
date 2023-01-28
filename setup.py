@@ -2,6 +2,7 @@ from setuptools import setup
 
 REQUIREMENTS = [
     "pyparrot",
+    "opencv-python-contrib",
     "opencv-python-headless",
     "mediapipe",
     "untangle",
